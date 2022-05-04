@@ -4,13 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0"
   },
   "scripts": {
-    "start": "webpack --mode=development --watch",
+    "start": "nodemon server/index.js",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open"
   },
