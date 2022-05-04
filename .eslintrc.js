@@ -9,15 +9,6 @@ module.exports = {
     'airbnb',
     'plugin:import/react',
   ],
-  rules: {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-      },
-  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

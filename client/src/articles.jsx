@@ -1,47 +1,27 @@
 import React from 'react';
 import ArticleRow from './articleRow.jsx';
 import './styles/articles.scss';
+import './styles/categories.scss';
 
-class Articles extends React.Component {
-constructor(props) {
-  super(props);
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
-componentDidMount() {
-  fetch(
-    "https://en.wikipedia.org/w/api.php?action=parse&prop=sections&page=Wikipedia%3AUnusual_articles&format=json&origin=*",
-    {
-      method: "GET"
-    }
-  )
-    .then(response => response.json())
-    .then(json => {
-      let sections = json.parse.sections;
-      fetch('https://www.wikitable2json.com/api/Wikipedia%3AUnusual_articles?lang=en&cleanRef=false')
-      .then(data => {
-        return data.json()
-      })
-      .then(data1=> {
-        let dataObject = {}
-        sections.map((section,index) => {
-          if(data1[index]) {
-            dataObject[section.anchor] = data1[index];
-          }
-        })
-        console.log(dataObject);
-      })
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-}
-render(){
-  return(
-    <div className='articles-container'><h4>Article List</h4>
-    <ArticleRow/>
+function Articles({ chosenArticle }) {
+  const randomArticle = chosenArticle[1] ? chosenArticle[1][(getRandomInt(0, chosenArticle[1].length - 1))] : [];
+  console.log(randomArticle);
+  return (
+    <div className="articles-container">
+      <h4>
+        Random Article from:
+        {' '}
+        {chosenArticle[0]}
+      </h4>
+      {chosenArticle[1] ? <ArticleRow article={randomArticle} /> : []}
     </div>
-  )
-}
+  );
 }
 
 export default Articles;

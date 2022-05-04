@@ -1,28 +1,22 @@
 import React from 'react';
-import './styles/categories.scss';
-let mockCategories = ["Places","Mathmatics","History",'langauge','science','technology,invetion and products','pop culture']
 
-class Categories extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-render(){
-  let shuffledCategories =
-  mockCategories
-  .map(value => ({ value, sort: Math.random() }))
-  .sort((a, b) => a.sort - b.sort)
-  .map(({ value }) => value)
+function Categories({articles, handleArticleClick}) {
+  const shuffledCategories = articles
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+    .slice(0, 5);
 
   return (
-    <div className='categories-container'>
+    <div className="categories-container">
       <h4>Categories</h4>
-      {shuffledCategories.map((category) => {
-        return <button> {category} </button>
-      })}
+      {shuffledCategories.map((category) => (
+        <button type="submit" onClick={() => handleArticleClick(category)}>
+          {category[0]}
+        </button>
+      ))}
     </div>
-  )
-}
+  );
 }
 
 export default Categories;
