@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const mongoURI = 'mongodb://localhost:27017/wikiUnusual';
 mongoose.connect(mongoURI);
 const articleSchema = new mongoose.Schema({});
@@ -407,4 +408,16 @@ const articleSchema = new mongoose.Schema({});
 // );
 const Article = mongoose.model('Article', articleSchema, 'articles');
 
+// const oneFavorite = new mongoose.Schema({
+//   name: String,
+//   description: String,
+// });
+
+// const favoritesSchema = new mongoose.Schema({
+//   favorites: [[oneFavorite]],
+// });
+
+// const Favorites = mongoose.model('Favorites', favoritesSchema);
+
 module.exports = Article;
+// module.exports = Favorites;

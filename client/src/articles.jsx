@@ -10,16 +10,20 @@ function getRandomInt(min, max) {
 }
 
 function Articles({ chosenArticle }) {
-  const randomArticle = chosenArticle[1] ? chosenArticle[1][(getRandomInt(0, chosenArticle[1].length - 1))] : [];
-  console.log(randomArticle);
+  const randomArticles = chosenArticle[1] ? chosenArticle[1].map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+    .slice(0, 5) : [];
+
+  // const randomArticle = chosenArticle[1] ? chosenArticle[1][(getRandomInt(0, chosenArticle[1].length - 1))] : [];
   return (
     <div className="articles-container">
       <h4>
-        Random Article from:
+        Random Articles from:
         {' '}
         {chosenArticle[0]}
       </h4>
-      {chosenArticle[1] ? <ArticleRow article={randomArticle} /> : []}
+      {randomArticles ? randomArticles.map((article) => <ArticleRow article={article} />) : []}
     </div>
   );
 }

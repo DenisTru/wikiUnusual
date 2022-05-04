@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './styles/articleRow.scss';
 
-function ArticleRow({ article }) {
+function ArticleRow({ article , handleSave}) {
   const [expandText, toggleExpand] = useState(false);
+  const [fav, setFav] = React.useState(false);
+
   return (
     <div className="article-rows-container">
       <div className="article-row">
