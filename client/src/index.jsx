@@ -6,6 +6,9 @@ import './styles/index.scss';
 import Categories from './categories.jsx';
 import ArticleRow from './articles.jsx';
 
+//TODO: SET UP LINK TO WIKIPEDIA
+
+
 const root = createRoot(document.getElementById('root'));
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +41,7 @@ class App extends React.Component {
       <div className="main-container">
         <h2>Unusual Things</h2>
         <Categories articles={articles} handleArticleClick={this.handleArticleClick} />
+        <br/>
         <ArticleRow chosenArticle={chosenArticle} />
       </div>
     );

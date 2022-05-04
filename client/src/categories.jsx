@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Categories({articles, handleArticleClick}) {
+function Categories({ articles, handleArticleClick }) {
   const shuffledCategories = articles
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
@@ -11,7 +11,7 @@ function Categories({articles, handleArticleClick}) {
     <div className="categories-container">
       <h4>Categories</h4>
       {shuffledCategories.map((category) => (
-        <button type="submit" onClick={() => handleArticleClick(category)}>
+        <button type="button" className="category-button" onClick={() => handleArticleClick(category)}>
           {category[0]}
         </button>
       ))}

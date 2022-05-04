@@ -1,10 +1,40 @@
 .categories-container {
   border-style: dashed;
   border-color: blue;
-  width: 40vw;
+  width: 50vw;
+  height: 20vw;
   overflow: hidden;
 }
 .categories-container h4 {
   padding: 0%;
   margin: 0;
+}
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+@mixin button-reset {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.category-button {
+  @include button-reset;
+  background-color: skyblue;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+
+  margin: 2px 2px;
+  border: solid 2px transparent;
+  border-radius: 0.4em;
+  color: #ffffff;
+  background-color: #2b2db8;
 }
