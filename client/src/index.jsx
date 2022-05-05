@@ -4,10 +4,7 @@ import axios from 'axios';
 
 import './styles/index.scss';
 import Categories from './categories.jsx';
-import ArticleRow from './articles.jsx';
-
-//TODO: SET UP LINK TO WIKIPEDIA
-
+import Articles from './articles.jsx';
 
 const root = createRoot(document.getElementById('root'));
 class App extends React.Component {
@@ -16,6 +13,7 @@ class App extends React.Component {
     this.state = {
       articles: [],
       chosenArticle: [],
+      favArticles: [],
     };
   }
 
@@ -35,14 +33,34 @@ class App extends React.Component {
     });
   };
 
+  handleFav = (article) => {
+    const { favArticles } = this.state;
+
+    // bool to check if item is in list
+    const checkFav = function () {
+      return favArticles.some(
+        (r) => r.length === article.length
+               && r.every((value, index) => article[index] === value),
+      );
+    };
+
+    // if not in list push it
+    if (!checkFav()) {
+      return favArticles.push(article);
+    }
+    const index = favArticles.indexOf(article);
+    return favArticles.splice(index, 1);
+    // TODO: make a tab with articleRow component but with filtered items
+  };
+
   render() {
     const { articles, chosenArticle } = this.state;
     return (
       <div className="main-container">
         <h2>Unusual Things</h2>
         <Categories articles={articles} handleArticleClick={this.handleArticleClick} />
-        <br/>
-        <ArticleRow chosenArticle={chosenArticle} />
+        <br />
+        <Articles chosenArticle={chosenArticle} handleFav={this.handleFav} />
       </div>
     );
   }
