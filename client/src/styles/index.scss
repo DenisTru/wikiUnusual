@@ -22,14 +22,32 @@
   }
 
 .title{
-    display: block;
-    background-image: linear-gradient(0deg, rgba(128,15,47,1) 8%, rgba(201,24,74,1) 40%, rgba(255,175,204,1) 69%);
-    background-clip: text;
-    -webkit-background-clip: text;
+  font-size: 1.6em;
+  display: block;
+background-image: linear-gradient(
+    45deg,
+    hsl(343deg 79% 28%) 0%,
+    hsl(345deg 69% 35%) 10%,
+    hsl(346deg 63% 43%) 20%,
+    hsl(347deg 59% 50%) 30%,
+    hsl(348deg 76% 57%) 40%,
+    hsl(349deg 100% 65%) 50%,
+    hsl(350deg 100% 70%) 60%,
+    hsl(350deg 100% 74%) 70%,
+    hsl(350deg 100% 78%) 80%,
+    hsl(349deg 100% 82%) 90%,
+    hsl(349deg 100% 85%) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+  background-size: 400%;
+  animation: bg-animation 5s infinite alternate;
   }
-.icon {
 
+@keyframes bg-animation {
+  0% {background-position: left;
+  }
+  100% {background-position: right;}
 }
