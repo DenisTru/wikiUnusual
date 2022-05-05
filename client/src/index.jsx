@@ -1,6 +1,9 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
 import axios from 'axios';
+import {
+  GiFlowerPot, GiButterflyFlower, GiFireFlower, GiFlowerHat, GiFlowerEmblem,
+} from 'react-icons/gi';
 
 import './styles/index.scss';
 import Categories from './categories.jsx';
@@ -54,13 +57,25 @@ class App extends React.Component {
   };
 
   render() {
-    const { articles, chosenArticle } = this.state;
+    const { articles, chosenArticle, favArticles } = this.state;
     return (
       <div className="main-container">
-        <h2>Unusual Things</h2>
+        <div className="title">
+
+          <h2>
+            <GiFlowerEmblem />
+            {' '}
+            <GiFlowerHat className="icon" />
+            {' '}
+            Unusual Things
+            {' '}
+            <GiButterflyFlower />
+            <GiFireFlower />
+          </h2>
+        </div>
         <Categories articles={articles} handleArticleClick={this.handleArticleClick} />
         <br />
-        <Articles chosenArticle={chosenArticle} handleFav={this.handleFav} />
+        <Articles chosenArticle={chosenArticle} handleFav={this.handleFav} favArticles={favArticles} />
       </div>
     );
   }

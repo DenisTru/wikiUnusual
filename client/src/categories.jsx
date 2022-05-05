@@ -9,7 +9,6 @@ function Categories({ articles, handleArticleClick }) {
 
   return (
     <div className="categories-container">
-      <h4>Categories</h4>
       {shuffledCategories.map((category) => (
         <button type="button" className="category-button" onClick={() => handleArticleClick(category)}>
           {category[0]}
